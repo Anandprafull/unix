@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <university>
+ <students>
+ <student>
+<serialNumber>1</serialNumber>
+ <name>Alex</name>
+ <usn>1RITCS001</usn>
+ <deptName>CSE</deptName>
+ </student>
+ <student>
+ <serialNumber>2</serialNumber>
+ <name>Smith</name>
+ <usn>1RITDS040</usn>
+ <deptName>DS</deptName>
+ </student>
+ <student>
+ <serialNumber>3</serialNumber>
+ <name>Saliena</name>
+ <usn>1RITCV051</usn>
+ <deptName>Civil</deptName>
+ </student>
+ <student>
+ <serialNumber>4</serialNumber>
+ <name>Elizabeth</name>
+ <usn>1RITME011</usn>
+ <deptName>Mechanical</deptName>
+ </student>
+ </students>
+ <departments>
+ <department>
+ <serialNumber>1</serialNumber>
+ <name>CSE</name>
+ <departmentId>01</departmentId>
+ <totalEnrolledStudents>170</totalEnrolledStudents>
+ </department>
+ <department>
+ <serialNumber>2</serialNumber>
+ <name>DS</name>
+ <departmentId>02</departmentId>
+ <totalEnrolledStudents>188</totalEnrolledStudents>
+ </department>
+ <department>
+ <serialNumber>3</serialNumber>
+<name>Civil</name>
+ <departmentId>03</departmentId>
+ <totalEnrolledStudents>160</totalEnrolledStudents>
+ </department>
+ <department>
+ <serialNumber>4</serialNumber>
+ <name>Mechanical</name>
+ <departmentId>04</departmentId>
+ <totalEnrolledStudents>150</totalEnrolledStudents>
+ </department>
+ </departments>
+ </university>
+
+ sed -n '/<students>/,/<\/students>/p' sample.xml > students.xml
+
+ sed 's/<name>/<DeptName>/g; s/<\/name>/<\/DeptName>/g' sample.xml > sample2.xml
+
+ sed 's:.*<user>\(.*\)</usn>.*:\1:p' sample.xml | tee usn.txt
