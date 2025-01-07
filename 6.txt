@@ -1,0 +1,29 @@
+6ai)
+sed '2 s/Python/Perl/g' 1.txt
+
+6aii)
+sed '$ s/Programming/Scripting/' 1.txt
+
+6aiii)
+mkdir -p/MSRIT/CSE/UG/
+touch /MSRIT/CSE/UG/Python.txt
+basename /MSRIT/CSE/UG/Python.txt
+
+6aiv)
+sed 's/\(Bash\)/Learn \1 Programming/' 1.txt
+
+6bi)
+find . -type f -perm 0777
+
+6bii)
+find . -type f -perm 777 | chmod +t {} +
+
+6biii)
+find . -type d -perm 0777 -exec chmod 755 {} +
+
+6biv)
+find . -mtime -20
+find . -atime -20
+
+6bv)
+find . -mmin -60
