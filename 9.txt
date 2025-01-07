@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define BUFFER_SIZE 1024
+
+int main(int argc, char *argv[]){
+        if(argc!=3){
+                fprintf(stderr,"usage: %s<source_file><destination_file>\n",argv[0]);
+                exit(EXIT_FAILURE);
+        }
+
+        FILE *source_file,*destination_file;
+        char buffer[BUFFER_SIZE];
+        size_t bytesRead;
+
+        source_file = fopen(argv[1],"rb");
+
+        if(source_file==NULL){
+                perror("Error Opening Source file");
+                exit(EXIT_FAILURE);
+        }
+
+        destination_file=fopen(argv[2],"wb");
+
+        if(destination_file==NULL){
+                perror("Error opening destination file");
+                fclose(source_file);
+                exit(EXIT_FAILURE);
+        }
+
+        while((bytesRead=fread(buffer,1,BUFFER_SIZE,source_file))>0)
+        {
+                fwrite(buffer,1,bytesRead,destination_file);
+        }
+
+        fclose(source_file);
+        fclose(destination_file);
+        printf("File copied successfully");
+        return 0;
+}
+
+-------------------------------
+#include<stdio.h>
+#include<stdlib.h>
+#include<dirent.h>
+
+int main(){
+        DIR *dir;
+        struct dirent *entry;
+
+        dir=opendir(".");
+
+        if(dir==NULL){
+                perror("Error opening directory");
+                exit(EXIT_FAILURE);
+        }
+
+        while((entry=readdir(dir))!=NULL)
+        {
+                printf("%s\n",entry->d_name);
+        }
+
+        closedir(dir);
+
+        return 0;
+}
