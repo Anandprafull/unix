@@ -58,4 +58,4 @@
 
  sed 's/<name>/<DeptName>/g; s/<\/name>/<\/DeptName>/g' sample.xml > sample2.xml
 
- sed 's:.*<user>\(.*\)</usn>.*:\1:p' sample.xml | tee usn.txt
+ sed 's:.*<usn>\(.*\)</usn>.*:\1:p' sample.xml | tee usn.txt
